@@ -1,0 +1,165 @@
+{% extends 'teleka/main.html' %}
+
+{% load static %}
+
+{% block content %}
+
+{% include 'teleka/header.html' %}
+<!-- partial -->
+<div class="main-panel">
+  <div class="content-wrapper">
+    <div class="row">
+      <div class="col-md-12 grid-margin">
+        <div class="row">
+          <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+            <h3 class="font-weight-bold">Welcome <span class="text-primary">{{request.user |title}}</span></h3>
+            <h6 class="font-weight-normal mb-0">We are glad to be handling your Sacco Records </h6>
+          </div>
+          <div class="col-12 col-xl-4">
+            <div class="justify-content-end d-flex">
+              <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
+                <button class="btn btn-sm btn-light bg-white dropdown-toggle" type="button" id="dropdownMenuDate2"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  <i class="mdi mdi-calendar"></i> Today (10 Jan 2021)
+                </button>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuDate2">
+                  <a class="dropdown-item" href="#">January - March</a>
+                  <a class="dropdown-item" href="#">March - June</a>
+                  <a class="dropdown-item" href="#">June - August</a>
+                  <a class="dropdown-item" href="#">August - November</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <p class="card-title">Deposit Report</p>
+              <a href="#" class="text-info">View all</a>
+            </div>
+            <p class="font-weight-500">The total number of deposits within the date range. It is the period time a
+              user is actively engaged with your SACCO</p>
+            <div id="sales-legend" class="chartjs-legend mt-4 mb-2"></div>
+            <canvas id="sales-chart"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 grid-margin transparent">
+        <div class="row">
+          <div class="col-md-6 mb-4 stretch-card transparent">
+            <div class="card card-tale">
+              <div class="card-body">
+                <p class="mb-4">Total Members </p>
+                <p class="fs-30 mb-2">{{members_count}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4 stretch-card transparent">
+            <div class="card card-dark-blue">
+              <div class="card-body">
+                <p class="mb-4">Total Withdraws</p>
+                <p class="fs-30 mb-2">{{withdraw_count}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
+            <div class="card card-light-blue">
+              <div class="card-body">
+                <p class="mb-4">Total Deposits At Hand</p>
+                <p class="fs-30 mb-2">{{deposit_count}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 stretch-card transparent">
+            <div class="card card-light-danger">
+              <div class="card-body">
+                <p class="mb-4">Total Loans</p>
+                <p class="fs-30 mb-2">{{loan_count}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-title mb-0">Loans</p>
+            <div class="table-responsive">
+              <table class="table table-striped table-borderless">
+                <thead>
+                  <tr>
+                    <th>Full Name</th>
+                    <th>Amount</th>
+                    <th>Date of Repayment</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for loan in recent_loans|slice:"5" %}
+                  <tr>
+                    <td>{{loan.member_name}}</td>
+                    <td class="font-weight-bold">{{loan.amount}} UGX</td>
+                    <td>{{loan.date_of_repayemnt}}</td>
+                    <td class="font-weight-medium">
+                      <div class="badge badge-success">{{loan.status}}</div>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- content-wrapper ends -->
+  <!-- partial:partials/_footer.html -->
+  <footer class="footer">
+    <div class="d-sm-flex justify-content-center justify-content-sm-between">
+      <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2022<a
+          href="https://www.bootstrapdash.com/" target="_blank">Alvin Mutebi</a></span>
+
+    </div>
+  </footer>
+  <!-- partial -->
+</div>
+<!-- main-panel ends -->
+</div>
+<!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+
+<!-- plugins:js -->
+<script src="{% static 'assets/vendors/js/vendor.bundle.base.js' %}"></script>
+<!-- endinject -->
+<!-- Plugin js for this page -->
+<script src="{% static 'assets/vendors/chart.js/Chart.min.js' %}"></script>
+<script src="{% static 'assets/js/dataTables.select.min.js' %}"></script>
+
+<!-- End plugin js for this page -->
+<!-- inject:js -->
+<script src="{% static 'assets/js/off-canvas.js' %}"></script>
+<script src="{% static 'assets/js/hoverable-collapse.js' %}"></script>
+<script src="{% static 'assets/js/template.js' %}"></script>
+<script src="{% static 'assets/js/settings.js' %}"></script>
+<script src="{% static 'assets/js/todolist.js' %}"></script>
+<!-- endinject -->
+<!-- Custom js for this page-->
+<script src="{% static 'assets/js/dashboard.js' %}"></script>
+<script src="{% static 'assets/js/Chart.roundedBarCharts.js' %}"></script>
+<!-- End custom js for this page-->
+</body>
+{% endblock content %}
+
+</html>

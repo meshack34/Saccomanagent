@@ -1,0 +1,10 @@
+asgiref
+Django
+django-crispy-forms
+gunicorn
+Pillow
+psycopg2
+pytz
+sqlparse
+whitenoise
+backports.zoneinfo

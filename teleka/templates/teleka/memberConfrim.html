@@ -1,0 +1,15 @@
+{% extends 'teleka/main.html' %}
+
+{% block content %}
+{% include 'teleka/header.html' %}
+
+<div class="card-body">
+    <form method="POST">
+        {% csrf_token%}
+        <p>Are You Sure You want to delete this member? </p>
+        <input class="button" value="Delete" type="submit" />
+        <a href="{% url 'view-members' %}">Cancel</a>
+    </form>
+</div>
+
+{% endblock content %}

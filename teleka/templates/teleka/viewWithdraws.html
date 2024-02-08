@@ -1,0 +1,120 @@
+{% extends 'teleka/main.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+
+{% include 'teleka/header.html' %}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-md-12 grid-margin">
+                <div class="row">
+                    <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+                        <h3 class="font-weight-bold">View <span class="text-primary">Sacco Members</span>
+                        </h3>
+                        <h6 class="font-weight-normal mb-0">All Withdraws made by members in your SACCO</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="{% url 'create-withdraw' %}">Create Withdraw</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Withdraw</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-title">Withdraw List</p>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="table-responsive">
+                                    <table id="example" class="display expandable-table" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Full Name</th>
+                                                <th>Account Number</th>
+                                                <th>Amount</th>
+                                                <th>Date | Time </th>
+                                                <th>Withdrawn By </th>
+                                                <th>Status</th>
+                                                <th></th>
+                                                <th></th>
+
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for withdraw in withdraws %}
+                                            <tr>
+                                                <td>{{withdraw.member_name}}</td>
+                                                <td>{{withdraw.account_number}}</td>
+                                                <td>{{withdraw.amount}} UGX</td>
+                                                <td>{{withdraw.date_of_transaction}}</td>
+                                                <td>{{withdraw.withdrawn_by}}</td>
+                                                <td>{{withdraw.status}}</td>
+                                                <td><a href="{% url 'withdraw-update' withdraw.id %}"><i
+                                                            class="ti-pencil-alt text-primary"></i></a></td>
+                                                <td><a href="{% url 'withdraw-delete' withdraw.id %}"><i
+                                                            class="ti-trash text-primary"></i></a></td>
+
+
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <footer class="footer">
+        <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2022<a
+                    href="https://www.bootstrapdash.com/" target="_blank">Alvin Mutebi</a></span>
+
+        </div>
+    </footer>
+    {% for message in messages %}
+    {% if message.tags == 'success' %}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        var m = "{{message}}";
+        swal("Perfect !", m, 'success');
+    </script>
+    {% endif %}
+
+    {% endfor %}
+    <!-- plugins:js -->
+    <script src="{% static 'assets/vendors/js/vendor.bundle.base.js' %}"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="{% static 'assets/vendors/chart.js/Chart.min.js' %}"></script>
+    <script src="{% static 'assets/js/dataTables.select.min.js' %}"></script>
+
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="{% static 'assets/js/off-canvas.js' %}"></script>
+    <script src="{% static 'assets/js/hoverable-collapse.js' %}"></script>
+    <script src="{% static 'assets/js/template.js' %}"></script>
+    <script src="{% static 'assets/js/settings.js' %}"></script>
+    <script src="{% static 'assets/js/todolist.js' %}"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="{% static 'assets/js/dashboard.js' %}"></script>
+    <script src="{% static 'assets/js/Chart.roundedBarCharts.js' %}"></script>
+</div>
+
+{% endblock content%}

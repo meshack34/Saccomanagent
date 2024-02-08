@@ -1,0 +1,137 @@
+{% extends 'teleka/main.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+
+{% include 'teleka/header.html' %}
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-md-12 grid-margin">
+                <div class="row">
+                    <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+                        <h3 class="font-weight-bold">Initiate A Loan <span class="text-primary">Sacco Member</span>
+                        </h3>
+                        <h6 class="font-weight-normal mb-0">A Sacco member will belong to your SACCO and we assume they
+                            agree to your terms and Conditions</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+
+                                {{ form.member_name|as_crispy_field }}
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                {{form.account_number |as_crispy_field}}
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                {{form.amount |as_crispy_field}}
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                {{form.intrest_rate |as_crispy_field}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                {{form.repay_in |as_crispy_field}}
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                {{form.date_of_repayemnt |as_crispy_field}}
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                {{form.status |as_crispy_field}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                {{form.collateral1 |as_crispy_field}}
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                {{form.collateral2 |as_crispy_field}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                {{form.reason |as_crispy_field}}
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <h3 class="mb-0">Attachments</h3>
+                    <br>
+                    <div class="row">
+                        <div class="col"></div>
+                        <div class="col">
+                            <button type="submit" class="btn btn-primary btn-md btn-block">Save</button>
+                        </div>
+                        <div class="col"></div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2022<a
+                    href="https://www.bootstrapdash.com/" target="_blank">Alvin Mutebi</a></span>
+
+        </div>
+    </footer>
+    {% for message in messages %}
+    {% if message.tags == 'success' %}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        var m = "{{message}}";
+        swal("Perfect !", m, 'success');
+    </script>
+    {% endif %}
+
+    {% endfor %}
+    <!-- plugins:js -->
+    <script src="{% static 'assets/vendors/js/vendor.bundle.base.js' %}"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="{% static 'assets/vendors/chart.js/Chart.min.js' %}"></script>
+    <script src="{% static 'assets/js/dataTables.select.min.js' %}"></script>
+
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="{% static 'assets/js/off-canvas.js' %}"></script>
+    <script src="{% static 'assets/js/hoverable-collapse.js' %}"></script>
+    <script src="{% static 'assets/js/template.js' %}"></script>
+    <script src="{% static 'assets/js/settings.js' %}"></script>
+    <script src="{% static 'assets/js/todolist.js' %}"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="{% static 'assets/js/dashboard.js' %}"></script>
+    <script src="{% static 'assets/js/Chart.roundedBarCharts.js' %}"></script>
+</div>
+
+{% endblock content%}
