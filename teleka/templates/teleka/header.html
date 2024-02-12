@@ -89,7 +89,7 @@
                     <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false"
                         aria-controls="form-elements">
                         <i class="ti-wallet menu-icon"></i>
-                        <span class="menu-title">Deposits</span>
+                        <span class="menu-title">Savings</span>
                         <i class="menu-arrow"></i>
                     </a>
                     <div class="collapse" id="form-elements">
@@ -98,6 +98,22 @@
                                     Deposit</a></li>
                             <li class="nav-item"><a class="nav-link" href="{% url 'view-deposits' %}">View
                                     Deposits</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#form-elementsee" aria-expanded="false"
+                        aria-controls="form-elements">
+                        <i class="ti-wallet menu-icon"></i>
+                        <span class="menu-title">Exigency</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="form-elementsee">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"><a class="nav-link" href="#">
+                                    Benefits</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">
+                                    migrants</a></li>
                         </ul>
                     </div>
                 </li>
@@ -169,7 +185,7 @@
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item">
+                {% comment %} <li class="nav-item">
                     <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
                         <i class="ti-panel menu-icon"></i>
                         <span class="menu-title">Settings</span>
@@ -183,7 +199,7 @@
                                 </a></li>
                         </ul>
                     </div>
-                </li>
+                </li> {% endcomment %}
                
             </ul>
         </nav>
