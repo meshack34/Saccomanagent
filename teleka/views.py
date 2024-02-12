@@ -145,19 +145,14 @@ class MemberDetails(LoginRequiredMixin, DetailView):
     #     loans = Loan.objects.get(id='1')
     #     member_loan_count = loans.count()
     #     context['member_loan_count'] = context['member_loan_count']
-        
-
-
 
 
 
 class CreateDeposit(LoginRequiredMixin,SuccessMessageMixin,CreateView):
-
     model = Deposit
     fields = '__all__'
     template_name = 'teleka/createDeposit.html'
     success_url = reverse_lazy('view-deposits')
-
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super(CreateDeposit, self).form_valid(form)
