@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect 
+from django.contrib import auth
 
 from .models import *
 
@@ -51,6 +52,9 @@ class RegisterPage(FormView):
             return redirect('dashboard')
         return super(RegisterPage, self).get(*args, **kwargs)
 
+def logout_view(request):
+    auth.logout(request)
+    return redirect('login')
 
 class DashboardView(LoginRequiredMixin,ListView):
     model = Member
@@ -72,7 +76,6 @@ class DashboardView(LoginRequiredMixin,ListView):
 
 
         return context
-    
     
     def get_success_url(Self):
         return reverse_lazy('dashboard')
