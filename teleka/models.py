@@ -194,7 +194,7 @@ class Deposit(models.Model):
 	status = models.CharField(max_length=200, choices=STATUS)
 
 	def __str__(self):
-		return self.member_name.firstname + " " + self.member_name.lastname + " " + str(self.amount) + " UGX" + " " + str(self.date_of_transaction)
+		return self.member_name.firstname + " " + self.member_name.lastname + " " + str(self.amount) + " KSH" + " " + str(self.date_of_transaction)
 
 
 class Withdraw(models.Model):
@@ -210,7 +210,7 @@ class Withdraw(models.Model):
 	status = models.CharField(max_length=200, choices=STATUS)
 
 	def __str__(self):
-		return self.member_name.firstname + " " + self.member_name.lastname + " " + str(self.amount) + " UGX" + " " + str(self.date_of_transaction)
+		return self.member_name.firstname + " " + self.member_name.lastname + " " + str(self.amount) + " KSH" + " " + str(self.date_of_transaction)
 
 
 
@@ -242,7 +242,7 @@ class Loan(models.Model):
 		
 
 		def __str__(self):
-			return self.member_name.firstname + " " + self.member_name.lastname + " " + str(self.amount) + " UGX" + " " + str(self.date_of_loan_application)
+			return self.member_name.firstname + " " + self.member_name.lastname + " " + str(self.amount) + " KSH" + " " + str(self.date_of_loan_application)
 
 
 	
@@ -261,7 +261,7 @@ class RepayLoan(models.Model):
 		status = models.CharField(max_length=200, choices=STATUS)
 
 		def __str__(self):
-			return self.member_name.firstname + " " + self.member_name.lastname + " " + str(self.amount) + " UGX" + " " + str(self.date_of_loan_repayment)
+			return self.member_name.firstname + " " + self.member_name.lastname + " " + str(self.amount) + " KSH" + " " + str(self.date_of_loan_repayment)
 
 
 	
