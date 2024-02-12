@@ -30,7 +30,8 @@
             <ul class="navbar-nav navbar-nav-right">
                 <li class="nav-item nav-profile dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                        <img src="{% static 'assets/images/faces/AlvinMutebi.png' %}" alt="profile" />
+                        <img src="#" alt="profile" />
+                        {% comment %} <img src="{% static 'assets/images/faces/AlvinMutebi.png' %}" alt="profile" /> {% endcomment %}
                     </a>
                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                         <a class="dropdown-item">
@@ -176,9 +177,9 @@
                     </a>
                     <div class="collapse" id="auth">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a>
+                            <li class="nav-item"> <a class="nav-link" href="#"> profile </a>
                             </li>
-                            <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register
+                            <li class="nav-item"> <a class="nav-link" href="#"> Logout
                                 </a></li>
                         </ul>
                     </div>
