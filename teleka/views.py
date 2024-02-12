@@ -51,6 +51,9 @@ class RegisterPage(FormView):
             return redirect('dashboard')
         return super(RegisterPage, self).get(*args, **kwargs)
 
+def logout_view(request):
+    auth.logout(request)
+    return redirect('home')
 
 class DashboardView(LoginRequiredMixin,ListView):
     model = Member
@@ -72,7 +75,6 @@ class DashboardView(LoginRequiredMixin,ListView):
 
 
         return context
-    
     
     def get_success_url(Self):
         return reverse_lazy('dashboard')
