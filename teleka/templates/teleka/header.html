@@ -4,13 +4,10 @@
 <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-       <div class="text-center navbar-brand-wrapper justify-content-center">
-                <h2 style="margin: 20px 0 0 0; height: 50px;">FutureNiSasa<br></h2>
-                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                    <img src="{% static 'assets/images/faces/AlvinMutebi.png' %}" alt="profile" />
-                </a>
-            </div>
-            
+        <div class="text-center navbar-brand-wrapper justify-content-center">
+            <img src="{% static 'assets/images/futurenisasa.jpg' %}" alt="FutureNiSasa Logo" style="width: 50px; height: auto; margin-top: 0px;">
+           
+        </div>
         
 
         <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
@@ -148,22 +145,25 @@
                     </a>
                     <div class="collapse" id="charts">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">Members
+                            <li class="nav-item"> <a class="nav-link" href="#">Members
+                                Reports</a>
+                        </li>
+                            {% comment %} <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">Members
+                                    Reports</a>
+                            </li> {% endcomment %}
+                        </ul>
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"> <a class="nav-link" href="#">Deposits
                                     Reports</a>
                             </li>
                         </ul>
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">Deposits
+                            <li class="nav-item"> <a class="nav-link" href="#">Withdraw
                                     Reports</a>
                             </li>
                         </ul>
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">Withdraw
-                                    Reports</a>
-                            </li>
-                        </ul>
-                        <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">Loans Reports</a>
+                            <li class="nav-item"> <a class="nav-link" href="#">Loans Reports</a>
                             </li>
                         </ul>
                     </div>
