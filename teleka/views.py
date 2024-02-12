@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect 
+from django.contrib import auth
 
 from .models import *
 
@@ -53,7 +54,7 @@ class RegisterPage(FormView):
 
 def logout_view(request):
     auth.logout(request)
-    return redirect('home')
+    return redirect('login')
 
 class DashboardView(LoginRequiredMixin,ListView):
     model = Member
